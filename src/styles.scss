@@ -1,0 +1,12 @@
+@import "initial-variables";
+@import "functions";
+
+$primary: hsl(207, 100%, 71%);
+
+.is-vertical-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+@import "bulma";
