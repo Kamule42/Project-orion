@@ -12,6 +12,8 @@ library.add(fas);
 
 import { environment } from '../environments/environment';
 
+import { SharedModule } from './shared/shared.module';
+
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -21,7 +23,7 @@ import { AppComponent } from './app.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     FontAwesomeModule,
-    AppRoutingModule ],
+    AppRoutingModule, SharedModule ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })

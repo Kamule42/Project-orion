@@ -9,15 +9,15 @@
                 <p class="control has-icons-left has-icons-right">
                    <input
                   [(ngModel)]="data.email" name="email" #email="ngModel"
-                  class="input" type="email" placeholder="Email" email>
+                  class="input" type="email" placeholder="Email" emai required>
                   <span class="icon is-small is-left">
                     <fa-icon [icon]="['fa','envelope']"></fa-icon>
                   </span>
                   <span class="icon is-small is-right"
-                    [class.has-text-danger]="data.email.length > 0 && email.errors"
-                    [class.has-text-success]="data.email.length > 0 && !email.errors">
+                    [class.has-text-danger]="data.email.length > 0 && !email.valid"
+                    [class.has-text-success]="data.email.length > 0 && email.valid">
                     <fa-icon 
-                      [icon]="['fa',data.email.length > 0 && email.errors ? 'ban' : 'check']"></fa-icon>
+                      [icon]="['fa',data.email.length > 0 && !email.valid ? 'ban' : 'check']"></fa-icon>
                   </span>
                 </p>
               </div>
@@ -25,12 +25,15 @@
                 <p class="control has-icons-left has-icons-right">
                    <input
                   [(ngModel)]="data.emailConfirmation" name="emailConfirmation" #emailConfirmation="ngModel"
-                  class="input" type="email" placeholder="Email" email>
+                  class="input" type="email" placeholder="Email" email required validateEqual="email">
                   <span class="icon is-small is-left">
                     <fa-icon [icon]="['fa','envelope']"></fa-icon>
                   </span>
-                  <span class="icon is-small is-right">
-                    <fa-icon [icon]="['fa','check']"></fa-icon>
+                  <span class="icon is-small is-right"
+                    [class.has-text-danger]="data.emailConfirmation.length > 0 && !emailConfirmation.valid"
+                    [class.has-text-success]="data.emailConfirmation.length > 0 && emailConfirmation.valid">
+                    <fa-icon 
+                      [icon]="['fa',data.email.length > 0 && !email.valid ? 'ban' : 'check']"></fa-icon>
                   </span>
                 </p>
               </div>
