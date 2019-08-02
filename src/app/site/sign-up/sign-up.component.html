@@ -8,50 +8,55 @@
               <div class="field">
                 <p class="control has-icons-left has-icons-right">
                    <input
-                  [(ngModel)]="data.email" name="email"
-                  class="input" type="email" placeholder="Email">
+                  [(ngModel)]="data.email" name="email" #email="ngModel"
+                  class="input" type="email" placeholder="Email" email>
                   <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
+                    <fa-icon [icon]="['fa','envelope']"></fa-icon>
                   </span>
-                  <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
+                  <span class="icon is-small is-right"
+                    [class.has-text-danger]="data.email.length > 0 && email.errors"
+                    [class.has-text-success]="data.email.length > 0 && !email.errors">
+                    <fa-icon 
+                      [icon]="['fa',data.email.length > 0 && email.errors ? 'ban' : 'check']"></fa-icon>
                   </span>
                 </p>
               </div>
               <div class="field">
                 <p class="control has-icons-left has-icons-right">
                    <input
-                  [(ngModel)]="data.emailConfirmation" name="emailConfirmation"
-                  class="input" type="email" placeholder="Email">
+                  [(ngModel)]="data.emailConfirmation" name="emailConfirmation" #emailConfirmation="ngModel"
+                  class="input" type="email" placeholder="Email" email>
                   <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
+                    <fa-icon [icon]="['fa','envelope']"></fa-icon>
                   </span>
                   <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
+                    <fa-icon [icon]="['fa','check']"></fa-icon>
                   </span>
                 </p>
               </div>
               <div class="field">
                 <p class="control has-icons-left">
                   <input
-                  [(ngModel)]="data.password" name="password" class="input" type="password" placeholder="Password">
+                  [(ngModel)]="data.password" name="password" #password="ngModel"
+                  class="input" type="password" placeholder="Password">
                   <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
+                    <fa-icon [icon]="['fa','lock']"></fa-icon>
                   </span>
                 </p>
               </div>
               <div class="field">
                 <p class="control has-icons-left">
                   <input
-                  [(ngModel)]="data.passwordConfirmation" name="passwordConfirmation" class="input" type="password" placeholder="Password">
+                  [(ngModel)]="data.passwordConfirmation" name="passwordConfirmation" #passwordConfirmation="ngModel"
+                  class="input" type="password" placeholder="Password">
                   <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
+                    <fa-icon [icon]="['fa','lock']"></fa-icon>
                   </span>
                 </p>
               </div>
               <p class="control">
                 <button class="button is-primary is-medium is-fullwidth">
-                  <i class="fa fa-user"></i>
+                    <fa-icon [icon]="['fa','user']"></fa-icon>
                   Signup
                 </button>
               </p>
