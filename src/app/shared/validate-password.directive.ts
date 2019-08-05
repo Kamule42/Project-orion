@@ -34,7 +34,7 @@ export class ValidatePasswordDirective {
           });
           let ok = +containsUpperCase+(+containsLowerCase)+(+containerNumber)+(+containsSpecial) >= 3;
           if(!ok)  return {
-            validatePassword: false
+            validatePassword: true
           }
         }
         return null;

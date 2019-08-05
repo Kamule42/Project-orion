@@ -2,88 +2,94 @@
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered">
-        <article class="card is-rounded">
-          <div class="card-content">
-            <form (ngSubmit)="signup()">
-              <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                   <input
-                  [(ngModel)]="data.email" name="email" #email="ngModel"
-                  class="input" type="email" placeholder="Email" email required>
-                  <span class="icon is-small is-left">
-                    <fa-icon [icon]="['fa','envelope']"></fa-icon>
-                  </span>
-                  <span class="icon is-small is-right"
-                    [class.has-text-danger]="data.email.length > 0 && !email.valid"
-                    [class.has-text-success]="data.email.length > 0 && email.valid">
-                    <fa-icon 
-                      [icon]="['fa',data.email.length > 0 && !email.valid ? 'ban' : 'check']"></fa-icon>
-                  </span>
-                </p>
-              </div>
-              <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                   <input
-                  [(ngModel)]="data.emailConfirmation" name="emailConfirmation" #emailConfirmation="ngModel"
-                  class="input" type="email" placeholder="Confirm your email" email required validateEqual="email">
-                  <span class="icon is-small is-left">
-                    <fa-icon [icon]="['fa','envelope']"></fa-icon>
-                  </span>
-                  <span class="icon is-small is-right"
-                    [class.has-text-danger]="data.emailConfirmation.length > 0 && !emailConfirmation.valid"
-                    [class.has-text-success]="data.emailConfirmation.length > 0 && emailConfirmation.valid">
-                    <fa-icon 
-                      [icon]="['fa',data.emailConfirmation.length > 0 && !emailConfirmation.valid ? 'ban' : 'check']"></fa-icon>
-                  </span>
-                </p>
-              </div>
-              <div class="field">
-                <div class="control has-icons-left has-icons-right">
-                  <input
-                  [(ngModel)]="data.password" name="password" #password="ngModel"
-                  class="input" type="password" placeholder="Password"
-                  minLenght="8" validatePassword required>
-                  <span class="icon is-small is-left">
-                    <fa-icon [icon]="['fa','lock']"></fa-icon>
-                  </span>
-                  <span class="icon is-small is-right"
-                    [class.has-text-danger]="data.password.length > 0 && !password.valid"
-                    [class.has-text-success]="data.password.length > 0 && password.valid">
-                    <fa-icon 
-                      [icon]="['fa',data.password.length > 0 && !password.valid ? 'ban' : 'check']"></fa-icon>
-                  </span>
+         <div class="column is-ful-mobile is-half">
+          <div class="card is-rounded ">
+            <div class="card-content">
+              <form (ngSubmit)="signup()">
+                <div class="field">
+                  <p class="control has-icons-left has-icons-right">
+                    <input
+                    [(ngModel)]="data.email" name="email" #email="ngModel"
+                    class="input" type="email" placeholder="Email" email required>
+                    <span class="icon is-small is-left">
+                      <fa-icon [icon]="['fa','envelope']"></fa-icon>
+                    </span>
+                    <span class="icon is-small is-right"
+                      [class.has-text-danger]="data.email.length > 0 && !email.valid"
+                      [class.has-text-success]="data.email.length > 0 && email.valid">
+                      <fa-icon 
+                        [icon]="['fa',data.email.length > 0 && !email.valid ? 'ban' : 'check']"></fa-icon>
+                    </span>
+                  </p>
                 </div>
-                <p *ngIf="data.password > 0 && password.errors" class="help is-danger">
-                  {{password.errors}}
-                  <span *ngIf="password.errors.validatePassword">This must contains 3 of the following : lowercase, uppercase, numeric or special character</span>
+                <div class="field">
+                  <p class="control has-icons-left has-icons-right">
+                    <input
+                    [(ngModel)]="data.emailConfirmation" name="emailConfirmation" #emailConfirmation="ngModel"
+                    class="input" type="email" placeholder="Confirm your email" email required validateEqual="email">
+                    <span class="icon is-small is-left">
+                      <fa-icon [icon]="['fa','envelope']"></fa-icon>
+                    </span>
+                    <span class="icon is-small is-right"
+                      [class.has-text-danger]="data.emailConfirmation.length > 0 && !emailConfirmation.valid"
+                      [class.has-text-success]="data.emailConfirmation.length > 0 && emailConfirmation.valid">
+                      <fa-icon 
+                        [icon]="['fa',data.emailConfirmation.length > 0 && !emailConfirmation.valid ? 'ban' : 'check']"></fa-icon>
+                    </span>
+                  </p>
+                </div>
+                <div class="field">
+                  <div class="control has-icons-left has-icons-right">
+                    <input
+                    [(ngModel)]="data.password" name="password" #password="ngModel"
+                    class="input" type="password" placeholder="Password"
+                    [class.is-danger]="data.password.length > 0 && !password.valid"
+                    validatePassword required minlength="8">
+                    <span class="icon is-small is-left">
+                      <fa-icon [icon]="['fa','lock']"></fa-icon>
+                    </span>
+                    <span class="icon is-small is-right"
+                      [class.has-text-danger]="data.password.length > 0 && !password.valid"
+                      [class.has-text-success]="data.password.length > 0 && password.valid">
+                      <fa-icon 
+                        [icon]="['fa',data.password.length > 0 && !password.valid ? 'ban' : 'check']"></fa-icon>
+                    </span>
+                  </div>
+                  <p *ngIf="password.errors && password.errors.validatePassword" class="help is-danger">
+                    Must contains 3 of the following : lowercase, uppercase, numeric or special character
+                    
+                  </p>
+                  <p *ngIf="password.errors && password.errors.minlength" class="help is-danger">
+                    Needs at least 8 characters
+                  </p>
+                </div>
+                <div class="field">
+                  <p class="control has-icons-left has-icons-right">
+                    <input
+                    [(ngModel)]="data.passwordConfirmation" name="passwordConfirmation" #passwordConfirmation="ngModel"
+                    validateEqual="password"
+                    class="input" type="password" placeholder="Confirm your password"
+                    required>
+                    <span class="icon is-small is-left">
+                      <fa-icon [icon]="['fa','lock']"></fa-icon>
+                    </span>
+                    <span class="icon is-small is-right"
+                      [class.has-text-danger]="data.passwordConfirmation.length > 0 && !passwordConfirmation.valid"
+                      [class.has-text-success]="data.passwordConfirmation.length > 0 && password.valid">
+                      <fa-icon [icon]="['fa',data.passwordConfirmation.length > 0 && !passwordConfirmation.valid ? 'ban' : 'check']"></fa-icon>
+                    </span>
+                  </p>
+                </div>
+                <p class="control">
+                  <button class="button is-primary is-medium is-fullwidth">
+                      <fa-icon [icon]="['fa','user']"></fa-icon>
+                    Signup
+                  </button>
                 </p>
-              </div>
-              <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                  <input
-                  [(ngModel)]="data.passwordConfirmation" name="passwordConfirmation" #passwordConfirmation="ngModel"
-                  validateEqual="password"
-                  class="input" type="password" placeholder="Confirm your password"
-                  required>
-                  <span class="icon is-small is-left">
-                    <fa-icon [icon]="['fa','lock']"></fa-icon>
-                  </span>
-                  <span class="icon is-small is-right"
-                    [class.has-text-danger]="data.passwordConfirmation.length > 0 && !passwordConfirmation.valid"
-                    [class.has-text-success]="data.passwordConfirmation.length > 0 && password.valid">
-                    <fa-icon [icon]="['fa',data.passwordConfirmation.length > 0 && !passwordConfirmation.valid ? 'ban' : 'check']"></fa-icon>
-                  </span>
-                </p>
-              </div>
-              <p class="control">
-                <button class="button is-primary is-medium is-fullwidth">
-                    <fa-icon [icon]="['fa','user']"></fa-icon>
-                  Signup
-                </button>
-              </p>
-            </form>
+              </form>
+            </div>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   </div>
