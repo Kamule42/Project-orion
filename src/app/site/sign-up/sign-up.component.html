@@ -2,10 +2,10 @@
   <div class="hero-body">
     <div class="container">
       <div class="columns is-centered">
-         <div class="column is-ful-mobile is-half">
+         <div class="column is-full-mobile is-half">
           <div class="card is-rounded ">
             <div class="card-content">
-              <form (ngSubmit)="signup()">
+              <form (ngSubmit)="f.form.valid && signup()" #f="ngForm">
                 <div class="field">
                   <p class="control has-icons-left has-icons-right">
                     <input
@@ -81,11 +81,15 @@
                   </p>
                 </div>
                 <p class="control">
-                  <button class="button is-primary is-medium is-fullwidth">
+                  <button class="button is-primary is-medium is-fullwidth"
+                    [attr.disabled]="!f.form.valid ? '' : null">
                       <fa-icon [icon]="['fa','user']"></fa-icon>
                     Signup
                   </button>
                 </p>
+              <p>
+                <a [routerLink]="['/signin']">go back to sign in</a>
+              </p>
               </form>
             </div>
           </div>
