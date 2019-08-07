@@ -13,9 +13,11 @@ export class UserEffects {
   signInWithEmail$ = createEffect(() => 
     this.actions$.pipe(
       ofType(UserActions.SIGNIN_WITH_EMAIL),
-      exhaustMap(action =>
-        Observable.fromPromise (this.afAuth.auth.signInWithEmailAndPassword(
+      map(action => {
+        console.log("login : ", action)
+        return Observable.fromPromise (this.afAuth.auth.signInWithEmailAndPassword(
          action.email, action.password))
+        }
       )
     )
   );
