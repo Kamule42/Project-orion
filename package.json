@@ -14,11 +14,16 @@
     "@fortawesome/angular-fontawesome": "^0.4.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.20",
     "@fortawesome/free-solid-svg-icons": "^5.10.0",
+    "@ngrx/effects": "^8.2.0",
+    "@ngrx/entity": "^8.2.0",
+    "@ngrx/store": "8.2.0",
+    "@ngrx/store-devtools": "^8.2.0",
     "bulma": "^0.7.5",
     "core-js": "2",
     "firebase": "^6.3.4",
     "node-sass": "^4.12.0",
     "rxjs": "^6.5.2",
+    "rxjs-compat": "^6.5.2",
     "zone.js": "^0.9.1"
   },
   "scripts": {
