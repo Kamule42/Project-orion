@@ -11,12 +11,13 @@ import { SiteRoutingModule } from './site-routing.module';
 import { HomeComponent } from './home/home.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   imports: [
     CommonModule, FormsModule, FontAwesomeModule,
     SiteRoutingModule, SharedModule
   ],
-  declarations: [HomeComponent, SignInComponent, SignUpComponent]
+  declarations: [HomeComponent, SignInComponent, SignUpComponent, MainComponent]
 })
 export class SiteModule { }

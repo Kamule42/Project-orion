@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
+import { StoreModule } from '@ngrx/store';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -13,8 +13,9 @@ library.add(fas);
 import { environment } from '../environments/environment';
 
 import { SharedModule } from './shared/shared.module';
-
 import { AppRoutingModule } from './app-routing.module';
+
+import { userReducer } from './store';
 
 import { AppComponent } from './app.component';
 
@@ -23,7 +24,8 @@ import { AppComponent } from './app.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     FontAwesomeModule,
-    AppRoutingModule, SharedModule ],
+    AppRoutingModule, SharedModule,
+    StoreModule.forRoot({ user: userReducer }) ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })

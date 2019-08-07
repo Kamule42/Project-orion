@@ -3,6 +3,12 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import {  signinWithEmail } from '../../store/actions/user.action';
+import {  UserState } from '../../store/reducers/user.reducer';
+
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -10,7 +16,7 @@ import { auth } from 'firebase/app';
 })
 export class SignInComponent implements OnInit {
 
-  public data = {
+  public data:{email:string, password:string} = {
     email:"",
     password:""
   }
@@ -19,13 +25,17 @@ export class SignInComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public afAuth: AngularFireAuth) { }
+    public afAuth: AngularFireAuth,
+    private store: Store<{ user: UserState }>) { }
 
   ngOnInit() {
   }
 
   signin(){
-    this.afAuth.auth.signInWithEmailAndPassword(
+    this.store.dispatch(signinWithEmail({
+      email: this.data.email,
+      password: this.data.password}));
+    /*this.afAuth.auth.signInWithEmailAndPassword(
       this.data.email, this.data.password).then(() => {
       this.router.navigate(['/']);
     })
@@ -33,7 +43,7 @@ export class SignInComponent implements OnInit {
       //TODO : display error
       console.error(error);
       this.error = error;
-    });
+    });*/
     //this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
