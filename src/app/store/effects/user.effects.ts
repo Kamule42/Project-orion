@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, Observable  } from 'rxjs';
-import { catchError, exhaustMap, map } from 'rxjs/operators';
+import { EMPTY, from  } from 'rxjs';
+import { catchError, switchMap, map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
  
@@ -13,12 +13,16 @@ export class UserEffects {
   signInWithEmail$ = createEffect(() => 
     this.actions$.pipe(
       ofType(UserActions.SIGNIN_WITH_EMAIL),
-      map(action => {
-        console.log("login : ", action)
-        return Observable.fromPromise (this.afAuth.auth.signInWithEmailAndPassword(
+      switchMap(action => from (this.afAuth.auth.signInWithEmailAndPassword(
          action.email, action.password))
-        }
-      )
+         .map(result => {
+           type: UserActions.SIGNED_IN,
+           payload:result
+         ))
+         .catchError((error)=> of({
+           type: UserActions.SIGNED_ERROR
+         }))
+      ),
     )
   );
  
