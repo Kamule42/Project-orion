@@ -32,13 +32,13 @@ export class SignInComponent implements OnInit {
     private store: Store<{ user: UserState }>) { }
 
   ngOnInit() {
-    this.logged$ = this.store.pipe(
+    /*this.logged$ = this.store.pipe(
       select('user'),
       map(stateUser => stateUser != null && stateUser.authenticatedUser != null))
     this.error$ = this.store.pipe(
       select('user'),
       tap(state => console.log(state)),
-      map(stateUser => (stateUser != null && stateUser.error != null) ? stateUser.error.error : null))
+      map(stateUser => (stateUser != null && stateUser.error != null) ? stateUser.error.error : null))*/
   }
 
   signin(){
