@@ -28,16 +28,16 @@ export const userReducer = createReducer(initialState,
     loading: true,
     authenticatedUser: null
   })),
-  on(signedIn, (state, {user} ) => ({
+  on(signedIn, (state, {payload} ) => ({
     loading: false,
-    authenticatedUser : user
+    authenticatedUser : payload.user
   })),
   on(signout, state => ({
     loading:false,
     authenticatedUser: null
   })),
-  on(defineUsername, (state, {username}) => {
-    state.authenticatedUser.username = username;
+  on(defineUsername, (state, {payload}) => {
+    state.authenticatedUser.username = payload.username;
     return {
       loading:false,
       authenticatedUser: state.authenticatedUser
