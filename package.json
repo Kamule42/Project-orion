@@ -16,7 +16,7 @@
     "@fortawesome/free-solid-svg-icons": "5.10.1",
     "@ngrx/effects": "8.2.0",
     "@ngrx/entity": "8.2.0",
-    "@ngrx/store": "8.2.0",
+    "@ngrx/store": "^8.2.0",
     "@ngrx/store-devtools": "8.2.0",
     "bulma": "0.7.5",
     "core-js": "2.6.9",

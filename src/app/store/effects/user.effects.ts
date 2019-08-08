@@ -16,7 +16,7 @@ export class UserEffects {
     private actions$: Actions,
     public afAuth: AngularFireAuth,
   ) {
-    this.init()
+    this.init();
   }
 
   private init(){
