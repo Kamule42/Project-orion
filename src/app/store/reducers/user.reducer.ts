@@ -3,16 +3,18 @@ import { createReducer, on } from '@ngrx/store';
 import { User } from "../models/user.interface";
 
 import { signupWithEmail, signinWithEmail, signWithProvider,
- signout, defineUsername, signedIn } from "../actions/user.action";
+ signout, defineUsername, signedIn, signError } from "../actions/user.action";
 
 export interface UserState{
   loading:boolean;
   authenticatedUser: User;
+  error:string;
 }
 
 export const initialState:UserState = {
   loading: false,
-  authenticatedUser : null
+  authenticatedUser : null,
+  error: null
 };
 
 export const userReducer = createReducer(initialState,
@@ -41,6 +43,14 @@ export const userReducer = createReducer(initialState,
     return {
       loading:false,
       authenticatedUser: state.authenticatedUser
+    }
+  }),
+  on(signError, (state, {payload}) => {
+    console.log(state, payload)
+    return {
+      loading:false,
+      authenticatedUser: null,
+      error: payload.error
     }
   }),
 );

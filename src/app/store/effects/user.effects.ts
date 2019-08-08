@@ -35,8 +35,10 @@ export class UserEffects {
                 payload:result
             }),
             catchError((error)=> of({
-              type: UserActions.SIGNED_ERROR,
-              payload: null
+              type: UserActions.SIGN_ERROR,
+              payload: {
+                error : error.message
+              }
             }))
            )
         ),

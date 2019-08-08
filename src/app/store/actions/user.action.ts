@@ -39,4 +39,4 @@ export const defineUsername = createAction(
 
 export const signError = createAction(
   UserActions.SIGNED_ERROR,
-  props<{payload:{error:any}}>());
+  props<{payload:{error:string}}>());

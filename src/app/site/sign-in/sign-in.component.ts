@@ -5,7 +5,7 @@ import { auth } from 'firebase/app';
 
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import {  signinWithEmail } from '../../store/actions/user.action';
 import {  UserState } from '../../store/reducers/user.reducer';
@@ -22,6 +22,7 @@ export class SignInComponent implements OnInit {
     password:""
   }
   private logged$: Observable<boolean>;
+  private error$: Observable<string>;
 
   public error = null;
 
@@ -34,6 +35,10 @@ export class SignInComponent implements OnInit {
     this.logged$ = this.store.pipe(
       select('user'),
       map(stateUser => stateUser != null && stateUser.authenticatedUser != null))
+    this.error$ = this.store.pipe(
+      select('user'),
+      tap(state => console.log(state)),
+      map(stateUser => (stateUser != null && stateUser.error != null) ? stateUser.error.error : null))
   }
 
   signin(){

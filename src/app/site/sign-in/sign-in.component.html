@@ -33,6 +33,7 @@
                   Login
                 </button>
               </p>
+              {{error$ | async}}
               <p>
                 <a [routerLink]="['/signup']">or sign me up</a>
               </p>
