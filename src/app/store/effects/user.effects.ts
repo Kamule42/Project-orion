@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, from, of } from 'rxjs';
-import { catchError, mergeMap , map, tap } from 'rxjs/operators';
+import { Actions, Effect} from '@ngrx/effects';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
- 
-import { UserActions } from '../actions/user.action';
+
+import {initSignWithEmail} from './user/init-sign-with-email'
 
 @Injectable()
 export class UserEffects {
@@ -20,28 +17,6 @@ export class UserEffects {
   }
 
   private init(){
-    this.initSignWithEmail();
-  }
-
-  private initSignWithEmail(){
-    this.signInWithEmail$ = createEffect(() => 
-    this.actions$.pipe(
-      ofType(UserActions.SIGNIN_WITH_EMAIL),
-      map((action:any) => action.payload),
-      mergeMap ((payload:any) => {
-        return from(this.afAuth.auth.signInWithEmailAndPassword(
-         payload.email, payload.password));
-      }),
-      map(result => ({
-        type: UserActions.SIGNED_IN,
-        payload:result
-      })),
-      catchError((error)=> of({
-        type: UserActions.SIGNED_ERROR,
-        payload: {
-          error : error.message
-        }
-      }))
-    ));
+    this.signInWithEmail$ =  initSignWithEmail(this.actions$, this.afAuth);
   }
 }
