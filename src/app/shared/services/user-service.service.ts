@@ -16,6 +16,6 @@ export class UserServiceService {
     if(user === null){
       return null;
     }
-    return this.afs.doc<User>('Users/'+user.uid);
+    return this.afs.collection<User>('Users').ref.doc(user.uid);
   }
 }
