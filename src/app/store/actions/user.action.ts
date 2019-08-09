@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from "../models/user.interface";
+import { User } from "../../shared/models/user.interface";
 
 export enum UserActions {
   SIGNUP_WITH_EMAIL   = '[User Component] Sign up (with email)',

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { User } from "../models/user.interface";
+import { User } from "../../shared/models/user.interface";
 
 import { signupWithEmail, signinWithEmail, signWithProvider,
  signout, defineUsername, signedIn, signError } from "../actions/user.action";
