@@ -4,7 +4,7 @@ import { SessionService } from './session.service';
 import { User } from '../models/user.interface';
 
 @Injectable()
-export class UserServiceService {
+export class UserService {
 
   constructor(
     private afs: AngularFirestore,
