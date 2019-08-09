@@ -10,7 +10,7 @@ export function initSignWithEmail(actions$: Actions, afAuth:AngularFireAuth){
       ofType(UserActions.SIGNIN_WITH_EMAIL),
       map((action:any) => action.payload),
       mergeMap ((payload:any) => {
-        return from(.afAuth.auth.signInWithEmailAndPassword(
+        return from(afAuth.auth.signInWithEmailAndPassword(
          payload.email, payload.password));
       }),
       map(result => ({

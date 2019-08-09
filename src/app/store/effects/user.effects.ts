@@ -17,6 +17,6 @@ export class UserEffects {
   }
 
   private init(){
-    this.signInWithEmail$ =  initSignWithEmail(this.actions$, this.afAuth);
+    this.signInWithEmail$ = initSignWithEmail(this.actions$, this.afAuth);
   }
 }
