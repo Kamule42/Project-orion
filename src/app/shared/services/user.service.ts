@@ -3,7 +3,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { SessionService } from './session.service';
 import { User } from '../models/user.interface';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
 
   constructor(

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ValidateEqualDirective } from './directives/validate-equal.directive';
 import { ValidatePasswordDirective } from './directives/validate-password.directive';
 import { ModalComponent } from './components/modal/modal.component';
-import { UserService, SessionService } from './services';
 
 
 @NgModule({
@@ -11,7 +10,6 @@ import { UserService, SessionService } from './services';
     CommonModule
   ],
   declarations: [ValidateEqualDirective, ValidatePasswordDirective, ModalComponent],
-  exports : [ValidateEqualDirective, ValidatePasswordDirective, ModalComponent],
-  providers: [UserService, SessionService]
+  exports : [ValidateEqualDirective, ValidatePasswordDirective, ModalComponent]
 })
 export class SharedModule { }

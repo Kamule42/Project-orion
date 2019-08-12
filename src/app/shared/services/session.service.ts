@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from 'firebase/app';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SessionService {
 
   constructor(private afAuth:AngularFireAuth) {}
