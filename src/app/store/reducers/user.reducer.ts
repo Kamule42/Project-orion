@@ -31,10 +31,9 @@ export const userReducer = createReducer(initialState,
     authenticatedUser: null
   })),
   on(signedIn, (state, {payload} ) => {
-    console.log(state, payload);
     return {
     loading: false,
-    authenticatedUser : payload.user
+    authenticatedUser : payload
   }}),
   on(signout, state => ({
     loading:false,

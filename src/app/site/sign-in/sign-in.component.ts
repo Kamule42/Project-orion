@@ -28,7 +28,6 @@ export class SignInComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public afAuth: AngularFireAuth,
     private store: Store<{ user: UserState }>) { }
 
   ngOnInit() {
@@ -49,16 +48,6 @@ export class SignInComponent implements OnInit {
       email: this.data.email,
       password: this.data.password}
     }));
-    /*this.afAuth.auth.signInWithEmailAndPassword(
-      this.data.email, this.data.password).then(() => {
-      this.router.navigate(['/']);
-    })
-    .catch(error => {
-      //TODO : display error
-      console.error(error);
-      this.error = error;
-    });*/
-    //this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
 }

@@ -45,14 +45,19 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
+        <ng-container *ngIf="authUser$ | async as authUser; else unsignedIn" >
+            {{authUser.id}}
+        </ng-container>
+        <ng-template #unsignedIn>
+          <div class="buttons">
+            <a class="button is-primary">
+              <strong>Sign up</strong>
+            </a>
+            <a class="button is-light">
+              Log in
+            </a>
+          </div>
+        </ng-template>
       </div>
     </div>
   </div>
