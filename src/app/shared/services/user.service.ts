@@ -3,6 +3,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { SessionService } from './session.service';
 import { User } from '../models/user.interface';
 
+import { Observable, from } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,11 +16,17 @@ export class UserService {
     private session: SessionService) {}
 
 
-  getUser(){
-    let user = this.session.getCurrentUser();
-    if(user === null){
-      return null;
-    }
-    return this.afs.collection<User>('Users').ref.doc(user.uid);
+  getUser(uid:string):Observable<User>{
+    return from(this.afs.collection<User>('Users')
+      .ref.doc(uid)
+      .get())
+      .pipe(
+        map(doc => {
+          if(doc.exists){
+            return doc.data() as User;
+          }
+          return null;
+        })
+      );
   }
 }

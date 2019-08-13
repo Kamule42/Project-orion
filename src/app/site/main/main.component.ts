@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import {  UserState } from '../../store/reducers/user.reducer';
 
@@ -11,13 +12,16 @@ import {  UserState } from '../../store/reducers/user.reducer';
 })
 export class MainComponent implements OnInit {
 
-  user$: Observable<UserState>;
-
   constructor(private store: Store<{ user: UserState }>) {
-    this.user$ = store.pipe(select('user'));
   }
 
   ngOnInit() {
+    this.store.pipe(
+      select('user'),
+      map(payload => {
+        
+      })
+    );
   }
 
 }

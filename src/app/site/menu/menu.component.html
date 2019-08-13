@@ -1,63 +1,40 @@
 <nav class="navbar is-transparent is-fixed-top" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
+  <div class="container">
 
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" 
-    (click)="menuDisplayed = !menuDisplayed">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu"
-    [class.is-active]="menuDisplayed">
-    <div class="navbar-start">
-      <a class="navbar-item">
-        Home
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" 
+      (click)="menuDisplayed = !menuDisplayed">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </a>
-
-      <a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
-        </div>
-      </div>
     </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <ng-container *ngIf="authUser$ | async as authUser; else unsignedIn" >
-            {{authUser.id}}
+    <div class="navbar-menu"
+      [class.is-active]="menuDisplayed">
+      <div class="navbar-start">
+        <a class="navbar-item">
+          Home
+        </a>
+
+        <ng-container>
+
+
         </ng-container>
-        <ng-template #unsignedIn>
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
-          </div>
-        </ng-template>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <ng-container *ngIf="authUser$ | async as authUser; else unsignedIn" >
+              {{authUser.id}}
+          </ng-container>
+          <ng-template #unsignedIn>
+            <div class="buttons">
+              <a class="button is-primary" [routerLink]="['/signin']">
+                <strong>Sign in</strong>
+              </a>
+            </div>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>

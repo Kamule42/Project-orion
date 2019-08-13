@@ -7,7 +7,8 @@ export enum UserActions {
   SIGN_WITH_PROVIDER  = '[User Component] Sign with porvider',
   SIGNED_IN           = '[User Component] Sign in',
   SIGNE_OUT           = '[User Component] Sign out',
-  DEFINE_USERNAME     = '[User Component] define username',
+  RETRIEVE_USER       = '[User Component] retrieve username',
+  USER_RETRIEVED      = '[User Component] user retrived',
   SIGNED_ERROR        = '[User Component] sign error',
 }
 
@@ -33,9 +34,13 @@ export const signedIn = createAction(
 
 export const signout = createAction(UserActions.SIGNE_OUT);
 
-export const defineUsername = createAction(
-  UserActions.DEFINE_USERNAME,
-  props<{payload:{username:string}}>());
+export const retrieveUser = createAction(
+  UserActions.RETRIEVE_USER,
+  props<{payload:{uid:string}}>());
+
+export const userRetrieved = createAction(
+  UserActions.USER_RETRIEVED,
+  props<{payload:{user:User}}>());
 
 export const signError = createAction(
   UserActions.SIGNED_ERROR,
