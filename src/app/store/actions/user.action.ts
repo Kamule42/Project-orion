@@ -7,7 +7,7 @@ export enum UserActions {
   SIGN_WITH_PROVIDER  = '[User Component] Sign with porvider',
   SIGNED_IN           = '[User Component] Sign in',
   SIGNE_OUT           = '[User Component] Sign out',
-  RETRIEVE_USER       = '[User Component] retrieve username',
+  RETRIEVE_USER       = '[User Component] retrieve user',
   USER_RETRIEVED      = '[User Component] user retrived',
   SIGNED_ERROR        = '[User Component] sign error',
 }
